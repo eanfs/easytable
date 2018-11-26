@@ -13,6 +13,7 @@ import org.vandeseer.easytable.settings.VerticalAlignment;
 import org.vandeseer.easytable.structure.Row;
 import org.vandeseer.easytable.structure.Table;
 import org.vandeseer.easytable.structure.cell.CellBaseData;
+import org.vandeseer.easytable.structure.cell.CellCustom;
 import org.vandeseer.easytable.structure.cell.CellImage;
 import org.vandeseer.easytable.structure.cell.CellText;
 import org.vandeseer.easytable.util.PdfUtil;
@@ -140,6 +141,8 @@ public class TableDrawer {
             drawTextCell((CellText) cell, cellWidth, start.x, start.y);
         } else if (cell instanceof CellImage) {
             drawImageCell((CellImage) cell, cellWidth, start.x, start.y);
+        } else if (cell instanceof CellCustom) {
+            ((CellCustom) cell).onDraw(contentStream, startX, startY);
         }
 
     }
