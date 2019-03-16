@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.vandeseer.easytable.settings.Settings;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -16,8 +17,14 @@ public class CellCustom extends CellBaseData {
     @AllArgsConstructor
     public static class DrawingContext {
         public final PDPageContentStream contentStream;
+        // TODO Point
         public final float x;
         public final float y;
+
+        // TODO spanning settings
+        public Settings settings;
+        // TODO padding settings
+        // TODO border settings
     }
 
     @Builder.Default
@@ -34,7 +41,7 @@ public class CellCustom extends CellBaseData {
 
     public void onDraw(PDPageContentStream contentStream, final float lowerLeftX, final float lowerLeftY) {
         try {
-            onDrawConsumer.accept(new DrawingContext(contentStream, lowerLeftX, lowerLeftY));
+            onDrawConsumer.accept(new DrawingContext(contentStream, lowerLeftX, lowerLeftY, getSettings()));
         } catch(Exception exception) {
             exception.printStackTrace();
         }

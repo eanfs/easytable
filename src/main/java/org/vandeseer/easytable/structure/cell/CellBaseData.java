@@ -14,8 +14,8 @@ import org.vandeseer.easytable.structure.TableNotYetBuiltException;
 
 import java.awt.*;
 
-@SuperBuilder(toBuilder = true)
 @Getter
+@SuperBuilder(toBuilder = true)
 public abstract class CellBaseData {
 
     @Setter
@@ -34,6 +34,7 @@ public abstract class CellBaseData {
     @Builder.Default
     private final int rowSpan = 1;
 
+    // TODO move these into one settings class
     @Builder.Default
     private final float paddingLeft = 4;
 
@@ -46,6 +47,7 @@ public abstract class CellBaseData {
     @Builder.Default
     private final float paddingBottom = 4;
 
+    // TODO move these into one settings class
     @Builder.Default
     private float borderWidthTop = 0;
 
